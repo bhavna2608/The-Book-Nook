@@ -1,0 +1,102 @@
+Book
+-
+book_id varchar(30) pk FK >- BookGenre.book_id
+title varchar(255)
+author_id varchar(30) 
+publication_date date
+genre_id varchar(30) FK >- Genre.genre_id
+ISBN int(13)
+price float(5,2)
+quantity int(5)
+supplier_id varchar(30)
+
+Author
+-
+author_id varchar(30) pk FK >- Book.author_id
+name varchar(100)
+birthdate date
+nationality varchar(100)
+no_of_books int(4)
+website varchar(255)
+image varchar(255)
+awards varchar(255)
+contact varchar(255)
+
+Genre
+-
+genre_id varchar(30) pk FK >- BookGenre.genre_id
+name varchar(255)
+
+Order
+-
+order_id varchar(30) pk FK >- OrderItem.order_id
+customer_id varchar(30) FK >- Customer.customer_id
+order_date date
+total_amount float(5,2)
+
+OrderItem
+-
+order_item_id varchar(30) pk
+order_id varchar(30) fk
+book_id varchar(30) FK >- Book.book_id
+quantity int(4)
+price float(5,2)
+
+Customer
+-
+customer_id varchar(30) pk FK >- Review.customer_id
+name varchar(100)
+email varchar(255)
+address_line1 varchar(255)
+address_line2 varchar(255)
+city varchar(255)
+zipcode int(6)
+phone int(10)
+birthdate date
+total_books_purchased int(5)
+status varchar(20)
+
+Employee
+-
+employee_id varchar(30) pk
+name varchar(100)
+position varchar(100)
+email varchar(255)
+phone int(10)
+birthdate date
+
+Supplier
+-
+supplier_id varchar(30) pk FK >- Book.supplier_id
+name varchar(100)
+email varchar(255)
+address_line1 varchar(255)
+address_line2 varchar(255)
+city varchar(255)
+country varchar(255)
+zipcode int(6) 
+phone int(10)
+
+Review
+-
+review_id varchar(30) pk
+book_id varchar(30) fk
+customer_id varchar(30) fk
+rating float(2,1)
+comment 
+review_date date
+
+Promotion
+-
+promotion_id varchar(30) pk
+name varchar(100)
+start_date date
+end_date date
+discount_percentage float(3,1)
+
+EmployeeShift
+-
+shift_id varchar(30) pk
+employee_id varchar(30) fk
+start_time datetime
+end_time datetime
